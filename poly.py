@@ -112,9 +112,12 @@ class LinkedList:
     # If a term with that exponent already exists, add the coefficients together.
     # You must keep the terms in descending order by exponent.
     def insert_term(self, coeff, exp):
+        """
+        Inserts the term into the current polynomial
+        """
         my_node = Node(coeff,exp)
 
-        if coeff == 0: 
+        if coeff == 0:
             return
 
         my_node = Node(coeff, exp)
@@ -146,24 +149,29 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p):
+        """
+        Adds another polynomial p to the current polynomial and returns a new linked list
+        """
         result = LinkedList()
         current = self.head
 
-        while current: 
-            result.insert_term(current.coeff, current.exp); 
+        while current:
+            result.insert_term(current.coeff, current.exp)
             current = current.next
 
         current = p.head
 
-        while current: 
-            result.insert_term(current.coeff, current.exp); 
+        while current:
+            result.insert_term(current.coeff, current.exp)
             current = current.next
 
         return result
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
-
+        """
+        Multiplies our current polynomial by another polynomial changing the coefficients and exponents, and returns a new linked list
+        """
         result = LinkedList()
 
         current = self.head
@@ -177,20 +185,21 @@ class LinkedList:
 
             result = result.add(temp)
             current = current.next
-        
         return result
 
     # Return a string representation of the polynomial.
-    def __str__(self):
-        
+    def __str__(self): 
+        """
+        Outputs how we want our polynomial formatted once printed
+        """
         if self.head is None:
             return ""
-        
-        poly = list()
+            
+        poly = []
         current = self.head
 
         while current is not None:
-            poly.append("({}, {})".format(current.coeff,current.exp))
+            poly.append(f"({current.coeff}, {current.exp})")
             current = current.next
 
         return " + ".join(poly)
@@ -216,7 +225,7 @@ def main():
     m = int(input().strip())
     q = LinkedList()
 
-    for _ in range(m): 
+    for _ in range(m):
         q.insert_term(*map(int, input().split()))
 
     print(p.add(q))
