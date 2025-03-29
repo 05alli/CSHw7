@@ -190,10 +190,10 @@ class LinkedList:
         current = self.head
 
         while current is not None:
-            poly.append("({},{})".format(current.coeff,current.exp))
+            poly.append("({}, {})".format(current.coeff,current.exp))
             current = current.next
 
-        return "+".join(poly)
+        return " + ".join(poly)
 
 
 def main():
