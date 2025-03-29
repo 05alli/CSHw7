@@ -159,7 +159,7 @@ class LinkedList:
             result.insert_term(current.coeff, current.exp); 
             current = current.next
 
-        return res
+        return result
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
